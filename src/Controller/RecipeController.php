@@ -84,6 +84,7 @@ class RecipeController extends AbstractController
 
         foreach ($recipes as $recipe) {
             $response[] = array(
+                'id'=>$recipe->getId(),
                 'name' => $recipe->getName(),
                 'ingredients' => $recipe->getIngredients(),
                 'img' => $recipe->getimg(),
