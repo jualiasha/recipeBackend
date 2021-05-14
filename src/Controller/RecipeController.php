@@ -9,6 +9,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+//$method = $_SERVER['REQUEST_METHOD'];
+/*if ($method == "OPTIONS") {
+    die();
+}*/
+
 class RecipeController extends AbstractController
 {
     #[Route('/recipe', name: 'recipe')]
