@@ -79,15 +79,15 @@ class RecipeController extends AbstractController
      */
     public function addmoreRecipe(Request $request){
 
-        $name=$request->get('name');
-        $img=$request->get('img');
-        $prepTime=$request->get('prepTime');
-        $cookTime=$request->get('cookTime');
-        $serves=$request->get('serves');
-        $ingrnumber=$request->get('ingrnumber');
-        $ingredients=$request->get('ingredients');
-        $category=$request->get('category');
-        $description=$request->get('description');
+        $name=$request->request->get('name');
+        $img=$request->request->get('img');
+        $prepTime=$request->request->get('prepTime');
+        $cookTime=$request->request->get('cookTime');
+        $serves=$request->request->get('serves');
+        $ingrnumber=$request->request->get('ingrnumber');
+        $ingredients=$request->request->get('ingredients');
+        $category=$request->request->get('category');
+        $description=$request->request->get('description');
 
         $entityManager = $this->getDoctrine()->getManager();
         $newRecipe = new Recipe();
