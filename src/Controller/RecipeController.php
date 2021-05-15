@@ -77,19 +77,19 @@ class RecipeController extends AbstractController
     /**
      * @Route("/recipe/addmore", name="add_more")
      */
-    public function addmoreRecipe(){
+    public function addmoreRecipe(Request $request){
+
+        $name=$request->get('name');
+        $img=$request->get('img');
+        $prepTime=$request->get('prepTime');
+        $cookTime=$request->get('cookTime');
+        $serves=$request->get('serves');
+        $ingrnumber=$request->get('ingrnumber');
+        $ingredients=$request->get('ingredients');
+        $category=$request->get('category');
+        $description=$request->get('description');
+
         $entityManager = $this->getDoctrine()->getManager();
-
-        $name=$_POST['name'];
-        $img=$_POST['img'];
-        $prepTime=$_POST['prepTime'];
-        $cookTime=$_POST['cookTime'];
-        $serves=$_POST['serves'];
-        $ingrnumber=$_POST['ingrnumber'];
-        $ingredients=$_POST['ingredients'];
-        $category=$_POST['category'];
-        $description=$_POST['description'];
-
         $newRecipe = new Recipe();
         $newRecipe->setName($name);
         $newRecipe->setImg($img);
