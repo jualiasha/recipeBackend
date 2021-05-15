@@ -75,6 +75,45 @@ class RecipeController extends AbstractController
     }
 
     /**
+     * @Route("/recipe/addmore", name="add_more")
+     */
+    public function addmoreRecipe(){
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $name=$_POST['name'];
+        $img=$_POST['img'];
+        $prepTime=$_POST['prepTime'];
+        $cookTime=$_POST['cookTime'];
+        $serves=$_POST['serves'];
+        $ingrnumber=$_POST['ingrnumber'];
+        $ingredients=$_POST['ingredients'];
+        $category=$_POST['category'];
+        $description=$_POST['description'];
+
+        $newRecipe = new Recipe();
+        $newRecipe->setName($name);
+        $newRecipe->setImg($img);
+        $newRecipe->setprepTime($prepTime);
+        $newRecipe->setcookTime($cookTime);
+        $newRecipe->setServes($serves);
+        $newRecipe->setIngrnumber($ingrnumber);
+        $newRecipe->setIngredients([
+            $ingredients
+        ]);
+        $newRecipe->setCategory($category);
+        $newRecipe->setDescription([
+            $description
+        ]);
+
+        $entityManager->persist($newRecipe);
+
+
+        $entityManager->flush();
+
+        return new Response('trying to add new recipe...'  . $newRecipe->getId() . " ". $newRecipe->getName());
+    }
+
+    /**
      * @Route("/recipe/all", name="get_all_recipe")
      */
     public function getAllRecipe()
