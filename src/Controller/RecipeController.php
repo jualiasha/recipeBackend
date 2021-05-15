@@ -126,7 +126,7 @@ class RecipeController extends AbstractController
     }
 
     /**
-     * @Route("/recipe/addnew", name="add_new_query_recipe", method="POST")
+     * @Route("/recipe/addnew", name="add_new_query_recipe", methods="POST")
      */
     public function recipe(Request $request)
     {
