@@ -126,7 +126,7 @@ class RecipeController extends AbstractController
     }
 
     /**
-     * @Route("/recipe/addnew", name="add_new_query_recipe")
+     * @Route("/recipe/addnew", name="add_new_query_recipe", method="POST")
      */
     public function recipe(Request $request)
     {
@@ -138,10 +138,10 @@ class RecipeController extends AbstractController
         $serves=$request->query->get(key: 'serves');
         $ingrnumber=$request->query->get(key: 'ingrnumber');
 
-        $ingredients=$request->query->get( key: 'ingrfield');
+        $ingredients[]=$request->query->get( key: 'ingrfield');
 
         $category=$request->query->get(key: 'category');
-        $description=$request->query->get(key: 'desc');
+        $description[]=$request->query->get(key: 'desc');
 
 
 
