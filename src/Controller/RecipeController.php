@@ -79,9 +79,9 @@ class RecipeController extends AbstractController
      */
     public function addmoreRecipe(Request $request){
 
-        $data=json_decode($request->getContent(), true);
-
         $entityManager = $this->getDoctrine()->getManager();
+
+        $data=json_decode($request->getContent(), true);
         $newRecipe = new Recipe();
         $newRecipe->setName($data['name']);
         $newRecipe->setImg($data['img']);
