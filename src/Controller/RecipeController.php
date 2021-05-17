@@ -79,30 +79,22 @@ class RecipeController extends AbstractController
      */
     public function addmoreRecipe(Request $request){
 
-        $name=$request->request->get('name');
-        $img=$request->request->get('img');
-        $prepTime=$request->request->get('prepTime');
-        $cookTime=$request->request->get('cookTime');
-        $serves=$request->request->get('serves');
-        $ingrnumber=$request->request->get('ingrnumber');
-        $ingredients=$request->request->get('ingredients');
-        $category=$request->request->get('category');
-        $description=$request->request->get('description');
+        $data=json_decode($request->getContent(), true);
 
         $entityManager = $this->getDoctrine()->getManager();
         $newRecipe = new Recipe();
-        $newRecipe->setName($name);
-        $newRecipe->setImg($img);
-        $newRecipe->setprepTime($prepTime);
-        $newRecipe->setcookTime($cookTime);
-        $newRecipe->setServes($serves);
-        $newRecipe->setIngrnumber($ingrnumber);
+        $newRecipe->setName($data['name']);
+        $newRecipe->setImg($data['img']);
+        $newRecipe->setprepTime($data['prepTime']);
+        $newRecipe->setcookTime($data['cookTime']);
+        $newRecipe->setServes($data['serves']);
+        $newRecipe->setIngrnumber($data['ingrnumber']);
         $newRecipe->setIngredients([
-            $ingredients
+            $data['ingredients']
         ]);
-        $newRecipe->setCategory($category);
+        $newRecipe->setCategory($data['category']);
         $newRecipe->setDescription([
-            $description
+            $data['description']
         ]);
 
         $entityManager->persist($newRecipe);
