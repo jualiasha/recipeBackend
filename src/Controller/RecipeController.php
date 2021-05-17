@@ -20,14 +20,14 @@ header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 class RecipeController extends AbstractController
 {
-    #[Route('/recipe', name: 'recipe')]
-    public function index(): Response
-    {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/RecipeController.php',
-        ]);
-    }
+//    #[Route('/recipe', name: 'recipe')]
+//    public function index(): Response
+//    {
+//        return $this->json([
+//            'message' => 'Welcome to your new controller!',
+//            'path' => 'src/Controller/RecipeController.php',
+//        ]);
+//    }
     /**
      * @Route("/recipe/add", name="add_new_recipe")
      */
@@ -156,53 +156,53 @@ class RecipeController extends AbstractController
         }
     }
 
-    /**
-     * @Route("/recipe/addnew", name="add_new_query_recipe")
-     */
-    public function recipe(Request $request)
-    {
-
-        $name=$request->query->get('name');
-        $img=$request->query->get('img');
-        $prepTime=$request->query->get(key: 'prepTime');
-        $cookTime=$request->query->get(key: 'cookTime');
-        $serves=$request->query->get(key: 'serves');
-        $ingrnumber=$request->query->get(key: 'ingrnumber');
-
-        $ingredients[]=$request->query->get( key: 'ingrfield');
-
-        $category=$request->query->get(key: 'category');
-        $description[]=$request->query->get(key: 'desc');
-
-
-
-        $entityManager = $this->getDoctrine()->getManager();
-
-        $newRecipe = new Recipe();
-        $newRecipe->setName($name);
-        $newRecipe->setImg($img);
-        $newRecipe->setPrepTime($prepTime);
-        $newRecipe->setCookTime($cookTime);
-        $newRecipe->setServes($serves);
-        $newRecipe->setIngrnumber($ingrnumber);
-
-        $newRecipe->setIngredients((array)$ingredients);
-        $newRecipe->setCategory($category);
-        $newRecipe->setDescription((array)$description);
-
-
-
-
-        $entityManager->persist($newRecipe);
-
-
-        $entityManager->flush();
-
-        return new Response('adding new recipe...' . $newRecipe->getId() . $newRecipe->getName());
-
-
-
-    }
+//    /**
+//     * @Route("/recipe/addnew", name="add_new_query_recipe")
+//     */
+//    public function recipe(Request $request)
+//    {
+//
+//        $name=$request->query->get('name');
+//        $img=$request->query->get('img');
+//        $prepTime=$request->query->get(key: 'prepTime');
+//        $cookTime=$request->query->get(key: 'cookTime');
+//        $serves=$request->query->get(key: 'serves');
+//        $ingrnumber=$request->query->get(key: 'ingrnumber');
+//
+//        $ingredients[]=$request->query->get( key: 'ingrfield');
+//
+//        $category=$request->query->get(key: 'category');
+//        $description[]=$request->query->get(key: 'desc');
+//
+//
+//
+//        $entityManager = $this->getDoctrine()->getManager();
+//
+//        $newRecipe = new Recipe();
+//        $newRecipe->setName($name);
+//        $newRecipe->setImg($img);
+//        $newRecipe->setPrepTime($prepTime);
+//        $newRecipe->setCookTime($cookTime);
+//        $newRecipe->setServes($serves);
+//        $newRecipe->setIngrnumber($ingrnumber);
+//
+//        $newRecipe->setIngredients((array)$ingredients);
+//        $newRecipe->setCategory($category);
+//        $newRecipe->setDescription((array)$description);
+//
+//
+//
+//
+//        $entityManager->persist($newRecipe);
+//
+//
+//        $entityManager->flush();
+//
+//        return new Response('adding new recipe...' . $newRecipe->getId() . $newRecipe->getName());
+//
+//
+//
+//    }
 
     /**
      * @Route("/recipe/edit/{id}/{name}")
