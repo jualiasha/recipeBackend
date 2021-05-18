@@ -20,16 +20,10 @@ header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 class RecipeController extends AbstractController
 {
-//    #[Route('/recipe', name: 'recipe')]
-//    public function index(): Response
-//    {
-//        return $this->json([
-//            'message' => 'Welcome to your new controller!',
-//            'path' => 'src/Controller/RecipeController.php',
-//        ]);
-//    }
+
     /**
      * @Route("/recipe/add", name="add_new_recipe")
+     * route adds new recipe to database manually from the file
      */
     public function addRecipe(){
         $entityManager = $this->getDoctrine()->getManager();
@@ -76,6 +70,7 @@ class RecipeController extends AbstractController
 
     /**
      * @Route("/recipe/addmore", name="add_more")
+     * route adds new recipe to db from the frontend form
      */
     public function addmoreRecipe(Request $request){
 
@@ -107,6 +102,7 @@ class RecipeController extends AbstractController
 
     /**
      * @Route("/recipe/all", name="get_all_recipe")
+     * route shows all resipes in the db
      */
     public function getAllRecipe()
     {
@@ -132,6 +128,7 @@ class RecipeController extends AbstractController
 
     /**
      * @Route("/recipe/find/{id}", name="find")
+     * route finds recipe by id
      */
     public function findRecipe($id) {
         $recipe = $this->getDoctrine()->getRepository(Recipe::class)->find($id);
@@ -156,56 +153,11 @@ class RecipeController extends AbstractController
         }
     }
 
-//    /**
-//     * @Route("/recipe/addnew", name="add_new_query_recipe")
-//     */
-//    public function recipe(Request $request)
-//    {
-//
-//        $name=$request->query->get('name');
-//        $img=$request->query->get('img');
-//        $prepTime=$request->query->get(key: 'prepTime');
-//        $cookTime=$request->query->get(key: 'cookTime');
-//        $serves=$request->query->get(key: 'serves');
-//        $ingrnumber=$request->query->get(key: 'ingrnumber');
-//
-//        $ingredients[]=$request->query->get( key: 'ingrfield');
-//
-//        $category=$request->query->get(key: 'category');
-//        $description[]=$request->query->get(key: 'desc');
-//
-//
-//
-//        $entityManager = $this->getDoctrine()->getManager();
-//
-//        $newRecipe = new Recipe();
-//        $newRecipe->setName($name);
-//        $newRecipe->setImg($img);
-//        $newRecipe->setPrepTime($prepTime);
-//        $newRecipe->setCookTime($cookTime);
-//        $newRecipe->setServes($serves);
-//        $newRecipe->setIngrnumber($ingrnumber);
-//
-//        $newRecipe->setIngredients((array)$ingredients);
-//        $newRecipe->setCategory($category);
-//        $newRecipe->setDescription((array)$description);
-//
-//
-//
-//
-//        $entityManager->persist($newRecipe);
-//
-//
-//        $entityManager->flush();
-//
-//        return new Response('adding new recipe...' . $newRecipe->getId() . $newRecipe->getName());
-//
-//
-//
-//    }
+
 
     /**
      * @Route("/recipe/edit/{id}/{name}")
+     * route edits id name
      */
     public function editRecipe($id, $name) {
         $entityManager = $this->getDoctrine()->getManager();
@@ -227,6 +179,7 @@ class RecipeController extends AbstractController
 
     /**
      * @Route("/recipe/remove/{id}", name="remove_a_recipe")
+     * route removes recipe by id from the db
      */
     public function removeRecipe($id)
     {
