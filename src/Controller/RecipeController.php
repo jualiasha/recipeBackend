@@ -89,13 +89,13 @@ class RecipeController extends AbstractController
         $newRecipe->setcookTime($data['cookTime']);
         $newRecipe->setServes($data['serves']);
         $newRecipe->setIngrnumber($data['ingrnumber']);
-        $newRecipe->setIngredients([
+        $newRecipe->setIngredients(
             $data['ingredients']
-        ]);
+        );
         $newRecipe->setCategory($data['category']);
-        $newRecipe->setDescription([
+        $newRecipe->setDescription(
             $data['description']
-        ]);
+        );
 
         $entityManager->persist($newRecipe);
 
